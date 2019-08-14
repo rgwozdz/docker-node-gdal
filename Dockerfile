@@ -27,6 +27,7 @@ ENV LC_ALL en_US.UTF-8
 ENV SRC_DIR /usr/src/
 RUN mkdir -p $SRC_DIR
 
+# Get and build proj6
 RUN curl -L https://download.osgeo.org/proj/proj-6.1.1.tar.gz -o /usr/src/proj-6.1.1.tar.gz
 RUN cd /usr/src && tar -xvzf proj-6.1.1.tar.gz
 WORKDIR /usr/src/proj-6.1.1
@@ -37,6 +38,7 @@ RUN make
 RUN make install
 RUN make check
 
+# Get and build GDAL 3.0
 RUN cd /usr/src
 RUN curl -L http://download.osgeo.org/gdal/3.0.0/gdal-3.0.0.tar.gz -o /usr/src/gdal-3.0.0.tar.gz
 RUN cd /usr/src && tar -xvzf gdal-3.0.0.tar.gz
